@@ -1,5 +1,5 @@
 ﻿\NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{kmemoir}[2011/09/15 v1.0]
+\ProvidesClass{kmemoir}[2011/09/15 v0.0.1]
 \DeclareOption*{\PassOptionsToClass{\CurrentOption}{memoir}}
 \ProcessOptions
 \LoadClass[oneside,showtrims]{memoir}

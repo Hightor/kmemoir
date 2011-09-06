@@ -3,7 +3,6 @@
 *.bbl
 *.blg
 *.dvi
-*.lock
 *.log
 *.lof
 *.nav
