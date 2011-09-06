@@ -1,16 +1,21 @@
 ﻿\NeedsTeXFormat{LaTeX2e}
 \ProvidesClass{kmemoir}[2011/09/15 v0.0.1]
-\DeclareOption*{\PassOptionsToClass{\CurrentOption}{memoir}}
-\ProcessOptions
 \LoadClass[oneside,showtrims]{memoir}
 \RequirePackage{xcolor}
-\RequirePackage[linktocpage,bookmarks,xetex]{hyperref}
-\newcommand{\xkmark}[2]{\begin{picture}(0,0)\setlength{\unitlength}{5mm}\linethickness{0.2pt}\put(0,0){\line(#1,0){1}}\put(0,0){\line(0,#2){1}}\end{picture}}
+\RequirePackage{ifthen}
+\newboolean{k@hyper}
+\DeclareOption{hyper}{\setboolean{k@hyper}{true}}
+\DeclareOption*{\PassOptionsToClass{\CurrentOption}{memoir}}
+\ProcessOptions
+\ifthenelse{\boolean{k@hyper}}{%
+	\RequirePackage[linktocpage,bookmarks]{hyperref}
+}{}
+\newcommand{\xk@mark}[2]{\begin{picture}(0,0)\setlength{\unitlength}{5mm}\linethickness{0.2pt}\put(0,0){\line(#1,0){1}}\put(0,0){\line(0,#2){1}}\end{picture}}
 \renewcommand*{\trimmarkscolor}{\color{black!20}}
-\renewcommand{\tmarktl}{\xkmark{1}{-1}}
-\renewcommand{\tmarktr}{\xkmark{-1}{-1}}
-\renewcommand{\tmarkbr}{\xkmark{-1}{1}}
-\renewcommand{\tmarkbl}{\xkmark{1}{1}}
+\renewcommand{\tmarktl}{\xk@mark{1}{-1}}
+\renewcommand{\tmarktr}{\xk@mark{-1}{-1}}
+\renewcommand{\tmarkbr}{\xk@mark{-1}{1}}
+\renewcommand{\tmarkbl}{\xk@mark{1}{1}}
 \let\tmarktm\relax
 \let\tmarkmr\relax
 \let\tmarkbm\relax
@@ -21,7 +26,7 @@
 \settocdepth{chapter}
 \renewcommand{\chaptitlefont}{\normalfont\large\bfseries}
 \setlength{\afterchapskip}{0.3ex \@plus .2ex}
-\setsecheadstyle{\normalfont\itshape\bfseries}
+\setsecheadstyle{\normalfont\sffamily\itshape\bfseries}
 \setsubsecheadstyle{\normalfont\bfseries}
 \setsubsubsecheadstyle{\normalfont\itshape}
 \setaftersecskip{0.15ex \@plus .1ex}
