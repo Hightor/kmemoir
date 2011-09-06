@@ -3,6 +3,7 @@
 *.bbl
 *.blg
 *.dvi
+*.fdb_latexmk
 *.log
 *.lof
 *.nav
